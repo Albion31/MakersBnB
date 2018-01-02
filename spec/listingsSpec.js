@@ -1,4 +1,3 @@
-
 describe("listings", function(){
 
   loadFixtures()
@@ -14,6 +13,9 @@ describe("listings", function(){
       it("should work and does work", function(){
         expect(fixture).toContainText('BearBnB');
       });
+      it("should be clicked", function(){
+        var click = 
+      })
     });
 
   afterEach(function () {
