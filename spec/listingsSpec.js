@@ -6,7 +6,6 @@ describe("listings", function(){
   beforeEach(function () {
     loadFixtures('listings.html');
     fixture = $('#content');
-    // fixture.listings();
   });
 
      describe("test", function(){
