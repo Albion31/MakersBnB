@@ -24,13 +24,13 @@ $(document).ready(function() {
 
 
 function sendToServer(newEntry) {
-  JSON.stringify(newEntry);
+  var entry = JSON.stringify(newEntry);
   $.ajax({
-      type: 'post',
-      url: 'localhost:9292/listings'
-      data: newEntry,
+      type: 'POST',
+      url: 'http://localhost:9292/listings',
+      data: entry,
       dataType: 'json',
       success: console.log("data sent"),
-      fail: console.log("error")
+      error: console.log("error")
   });
 }
