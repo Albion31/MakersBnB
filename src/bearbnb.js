@@ -1,9 +1,9 @@
 function BearBnB() {
-  this.listings = []
+  this.listingsArray = []
 }
 
 BearBnB.prototype.addListing = function(listing) {
-  this.listings.push(listing)
+  this.listingsArray.push(listing)
 }
 
 BearBnB.prototype.createListing = function(name, bio, guests) {

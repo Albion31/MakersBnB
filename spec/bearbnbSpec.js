@@ -12,12 +12,12 @@ describe("bearbnb", function() {
 
   it("stores new listings", function() {
     bearbnb.addListing(listing)
-    expect(bearbnb.listings[0].name).toEqual('Tree 4')
+    expect(bearbnb.listingsArray[0].name).toEqual('Tree 4')
   })
 
   it("should create new listings", function(){
     listingTest = bearbnb.createListing('Leafy Towers', 'Tall and leafy', 4)
     bearbnb.addListing(listingTest)
-    expect(bearbnb.listings[0].bio).toEqual('Tall and leafy')
+    expect(bearbnb.listingsArray[0].bio).toEqual('Tall and leafy')
   })
 })
