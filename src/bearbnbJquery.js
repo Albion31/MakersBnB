@@ -12,10 +12,25 @@ $(document).ready(function() {
   }
 
   $('#post').click(function() {
-    var name = $('#name').val()
-    var bio = $('#bio').val()
-    var guests = $('#guests').val()
-    bearbnb.addListing(bearbnb.createListing(name, bio, guests))
+    var name = $('#name').val();
+    var bio = $('#bio').val();
+    var guests = $('#guests').val();
+    var newEntry = bearbnb.createListing(name, bio, guests);
+    bearbnb.addListing(newEntry);
     updateList()
+    sendToServer(newEntry);
   })
 })
+
+
+function sendToServer(newEntry) {
+  JSON.stringify(newEntry);
+  $.ajax({
+      type: 'post',
+      url: 'localhost:9292/listings'
+      data: newEntry,
+      dataType: 'json',
+      success: console.log("data sent"),
+      fail: console.log("error")
+  });
+}
