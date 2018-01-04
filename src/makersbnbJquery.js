@@ -8,7 +8,8 @@ $(document).ready(function() {
     var guests = $('#guests').val();
     var newEntry = {name: name, bio: bio, guests: guests};
     sendToServer(newEntry);
-    getListings();
+    var timeDelay = 1000;
+    setTimeout(getListings, timeDelay)
   })
 })
 
