@@ -1,15 +1,7 @@
 $(document).ready(function() {
 
   var bearbnb = new BearBnB()
-
-  updateList = function() {
-    $(document).ready(function(){
-      var listing = bearbnb.listingsArray[bearbnb.listingsArray.length - 1]
-        $("#list_of_listings").append("<li>Property Name: " + listing.name + '<br>' +
-                                      " Description: " + listing.bio + '<br>' +
-                                      " Number of Guests: " + listing.guests + '<br><br></li>');
-    });
-  }
+  getListings()
 
   $('#post').click(function() {
     var name = $('#name').val();
@@ -17,8 +9,8 @@ $(document).ready(function() {
     var guests = $('#guests').val();
     var newEntry = bearbnb.createListing(name, bio, guests);
     bearbnb.addListing(newEntry);
-    updateList()
     sendToServer(newEntry);
+    getListings();
   })
 })
 
@@ -33,4 +25,36 @@ function sendToServer(newEntry) {
       success: console.log("data sent"),
       error: console.log("error")
   });
+}
+
+function getListings() {
+  $.get('http://localhost:9292/listings', function(listings) {
+    if($('#list_of_listings').children().length == 0) {
+      populateList(listings)
+    } else {
+      console.log('Success')
+      updateList(listings)
+    }
+  })
+}
+
+function populateList(listings) {
+  $(document).ready(function() {
+    listings.forEach(function(listing) {
+      printListing(listing)
+    })
+  });
+}
+
+function updateList(listings) {
+  $(document).ready(function() {
+    var listing = listings[listings.length - 1]
+      printListing(listing)
+  });
+}
+
+function printListing(listing) {
+  $("#list_of_listings").append("<li>Property Name: " + listing.name + '<br>' +
+                                " Description: " + listing.bio + '<br>' +
+                                " Number of Guests: " + listing.guests + '<br><br></li>');
 }
