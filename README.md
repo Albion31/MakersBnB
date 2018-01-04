@@ -1,13 +1,13 @@
 ### USER STORIES
 
 ```
-As a user
+<!-- As a user
 So that I can display my property
-I can post an advert for it
+I can post an advert for it -->
 
-As a user
+<!-- As a user
 So that I can see available properties
-I would like to be able to see a list of available properties
+I would like to be able to see a list of available properties -->
 
 As a user
 So that I can narrow down the list

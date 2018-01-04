@@ -1,11 +1,12 @@
 $(document).ready(function() {
 
-  getListings()
+getListings()
 
-  $('#post').click(function() {
+  $('#search').click(function() {
     var name = $('#name').val();
     var bio = $('#bio').val();
     var guests = $('#guests').val();
+    var location = $('#location').val();
     var newEntry = {name: name, bio: bio, guests: guests};
     sendToServer(newEntry);
     var timeDelay = 1000;
@@ -53,5 +54,6 @@ function updateList(listings) {
 function printListing(listing) {
   $("#list_of_listings").append("<li>Property Name: " + listing.name + '<br>' +
                                 " Description: " + listing.bio + '<br>' +
-                                " Number of Guests: " + listing.guests + '<br><br></li>');
+                                " Number of Guests: " + listing.guests + '<br><button id=' +
+                                listing.name + ' type=button>Book</button> </li><br><br>');
 }
