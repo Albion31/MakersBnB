@@ -1,19 +1,16 @@
 $(document).ready(function() {
 
-  var bearbnb = new BearBnB()
   getListings()
 
   $('#post').click(function() {
     var name = $('#name').val();
     var bio = $('#bio').val();
     var guests = $('#guests').val();
-    var newEntry = bearbnb.createListing(name, bio, guests);
-    bearbnb.addListing(newEntry);
+    var newEntry = {name: name, bio: bio, guests: guests};
     sendToServer(newEntry);
     getListings();
   })
 })
-
 
 function sendToServer(newEntry) {
   var entry = JSON.stringify(newEntry);
@@ -32,7 +29,6 @@ function getListings() {
     if($('#list_of_listings').children().length == 0) {
       populateList(listings)
     } else {
-      console.log('Success')
       updateList(listings)
     }
   })
